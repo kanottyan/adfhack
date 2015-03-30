@@ -1,27 +1,24 @@
 $(document).ready(function(){
-  var msg_id = 1;
-  var love = 50;
+  var msg_id = 0;
+  var love = 40;
   chatapi(msg_id);
-  $("#button").click(function(){
+  $(".next-button").click(function(){
     chatapi(msg_id);
   });
   function chatapi(message_id){
     $.ajax({
       url: '/api/chat',
       data: {message_id: message_id},
-      success: function(d) {
-          console.log('chat api succeeded.');
-          message = $.parseJson(d);
+      dataType: 'json',
+      success: function(message) {
           if(message.chater == "woman"){
-            $("#message_window").text = message.text;
-            love = loveapi(love,message.text);
+            loveapi(love,message.text);
             // 親密度の反映
-            $("#love_gage").value = love;
+            $("p").html(message.text);
           }else{
-            $("#message_window").text = message.text;
+            $("p").html('(俺) '+message.text);
           }
-          msg_id = message.message_id;
-          return;
+          msg_id += 1;
       }
     });
   }
@@ -30,8 +27,9 @@ $(document).ready(function(){
       url: '/api/love',
       data: {love_value: love_value,text: text},
       success: function(love_value) {
-          console.log('love api succeeded.');
-          return love_value;
+          love =  Number(love_value);
+          console.log(love);
+          $("#love-gage").html(love);
       }
     });
   }

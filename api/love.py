@@ -1,16 +1,16 @@
 #coding:utf-8:
-#import MeCab
+import MeCab
 
-def get_love_value(love_value,text):
+def get_love_value(val,text):
     #love_value = 50
-    diff = 10
-    """
-
+    love_value = int(val)
+    diff = 0
     tagger = MeCab.Tagger('-Ochasen')
 
-    text = text.encode("utf-8")
-    node = tagger.parseToNode(sample_comment)
+    node = tagger.parseToNode(text.encode("utf-8"))
     words =[]
+    positive = ["本当", "!?", "!", "わーい","(*^_^*)", "楽しみ"]
+    negative = ["ごめん", "...。", "無理"]
     while node:
         #print node.surface
         words.append(node.surface)
@@ -23,5 +23,5 @@ def get_love_value(love_value,text):
         elif word in negative:
             diff -= 2
             print "%snega!" %word
-            """
-    return love_value + diff
+    print love_value + diff
+    return str(love_value + diff)
