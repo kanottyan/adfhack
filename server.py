@@ -9,6 +9,10 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("index.html")
 
+class ListHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render("list.html")
+
 class ChatHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("chat.html")
@@ -27,6 +31,7 @@ class APILoveHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([
     (r"/", MainHandler),
     (r"/chat", ChatHandler),
+    (r"/list", ListHandler),
     (r"/api/love", APILoveHandler),
     (r"/api/chat", APIChatHandler),
     ],debug=True,
