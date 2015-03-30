@@ -7,8 +7,26 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("index.html")
 
+class FacebookHandler(tornado.web.RequestHandler):
+    def get(self):
+        response = {}
+        self.write(response)
+
+class LoveHandler(tornado.web.RequestHandler):
+    def get(self):
+        response = {}
+        self.write(response)
+
+class ChatHandler(tornado.web.RequestHandler):
+    def get(self):
+        response = {}
+        self.write(response)
+
 application = tornado.web.Application([
-    (r"/", MainHandler)
+    (r"/", MainHandler),
+    (r"/api/facebook", FacebookHandler),
+    (r"/api/love", LoveHandler),
+    (r"/api/chat", ChatHandler),
     ],debug=True,
     template_path=os.path.join(os.getcwd(),  "templates"),
     static_path=os.path.join(os.getcwd(),  "static"),
