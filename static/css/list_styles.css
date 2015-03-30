@@ -41,6 +41,9 @@ textarea {
  resize: none;
  outline: 0; 
 }
+a {
+ color:#eb5d1e;
+}
 .panel .btn i,.btn span{
  color:#666666;
 }
@@ -84,6 +87,10 @@ h3,h4,h5 {
  border-color:#f0f0f0;
  border-radius:0;
  margin-top:-1px;
+}
+footer {
+	text-align: center;
+	padding: 50px 0 ;
 }
 /* end theme */
 
