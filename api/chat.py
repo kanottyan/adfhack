@@ -1,5 +1,6 @@
 #coding:utf-8
 import json
+
 def get_message(id):
     message_id = int(id)
     messages = []
@@ -12,15 +13,11 @@ def get_message(id):
     messages.append([6,u"本当!?わーい(*^_^*)楽しみ♡","woman"])
     messages.append([6,u"本当!?わーい(*^_^*)楽しみ♡","woman"])
     messages.append([6,u"本当!?わーい(*^_^*)楽しみ♡","woman"])
-    jsons = []
+    data = []
     for message in messages:
-        jsons.append({
+        data.append({
             "message_id": message[0],
             "text": message[1],
             "chater": message[2]
         })
-    # if message_id < 7:
-    #     return json.dumps(jsons[message_id])
-    # else:
-    #     return json.dumps(jsons[6])
-    return json.dumps(jsons[message_id])
+    return json.dumps(data[message_id])
